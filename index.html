@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🚧 الموقع تحت الصيانة 🚧</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #fff);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .logo {
+      width: 250px;
+      animation: pulse 2s infinite;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 20px;
+      color: #0077b6;
+    }
+
+    .typewriter {
+      color: #023e8a;
+      font-size: 1.3rem;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #023e8a;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+      width: 20ch;
+    }
+
+    .gears {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+    }
+
+    .gear {
+      width: 40px;
+      height: 40px;
+      border: 5px solid #00b4d8;
+      border-radius: 50%;
+      position: relative;
+      animation: spin 4s linear infinite;
+    }
+
+    .gear::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 15px;
+      background-color: #00b4d8;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 20ch }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="شعار قيادة" class="logo" />
+  <h1>🚧الموقع تحت الصيانة - Temporary Maintenance 🚧 </h1>
+  <div class="typewriter">نحن نُعد لك تجربة مميزة جدًا...</div>
+  <div class="gears">
+    <div class="gear" style="animation-duration: 2s;"></div>
+  </div>
+</body>
+</html>
