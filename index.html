@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🚧 الموقع تحت الصيانة 🚧</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #fff);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /* خلفية شفافة */
+    .bg-overlay {
+      background-image: url('background.jpg'); /* غير الاسم حسب صورتك */
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      width: 250px;
+      animation: pulse 2s infinite;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 20px;
+      color: #0077b6;
+    }
+
+    .typewriter {
+  color: #023e8a;
+  font-size: 1.3rem;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #023e8a;
+  animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+  width: 20ch;
+  margin: 0 auto; /* هذا السطر يعمل Center أفقي */
+}
+
+
+    .gears {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .gear {
+      width: 40px;
+      height: 40px;
+      border: 5px solid #00b4d8;
+      border-radius: 50%;
+      position: relative;
+      animation: spin 4s linear infinite;
+    }
+
+    .gear::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 15px;
+      background-color: #00b4d8;
+    }
+
+    .social {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      color: #0077b6;
+      text-decoration: none;
+      font-size: 1.4rem;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 20ch }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="content">
+    <img src="logo.png" alt="شعار قيادة" class="logo" />
+    <h1>🚧الموقع تحت الصيانة - Temporary Maintenance 🚧 </h1>
+    <div class="typewriter">نحن نُعد لك تجربة مميزة جدًا...</div>
+    <div class="gears">
+      <div class="gear" style="animation-duration: 2s;"></div>
+    </div>
+    <div class="social">
+      <a href="https://wa.me/920011705" target="_blank" title="واتساب">
+        <img src="icons/whatsapp.png" alt="واتساب" width="30" height="30">
+      </a>
+      <a href="https://www.snapchat.com/add/qiadah.rent" target="_blank" title="سناب شات">
+        <img src="icons/snapchat.png" alt="سناب شات" width="30" height="30">
+      </a>
+      <a href="https://www.instagram.com/qiadahcars/" target="_blank" title="إنستقرام">
+        <img src="icons/instagram.png" alt="انستقرام" width="30" height="30">
+      </a>
+      <a href="https://www.tiktok.com/@qiadahcars" target="_blank" title="تيك توك">
+        <img src="icons/tiktok.png" alt="تيك توك" width="30" height="30">
+      </a>
+      <a href="https://x.com/qiadahcars" target="_blank" title="تويتر">
+        <img src="icons/twitter.png" alt="تويتر" width="30" height="30">
+      </a>
+      <a href="https://www.facebook.com/qiadah.cars/" target="_blank" title="فيسبوك">
+        <img src="icons/facebook.png" alt="فيسبوك" width="30" height="30">
+      </a>
+    </div>
+   <p style="margin-top: 15px; font-size: 1.1rem; color: #023e8a;">
+  تواصل معنا عبر الرقم الموحد:
+  <a href="tel:920011705" style="color: #0077b6; text-decoration: none; font-weight: bold;">
+    920011705 📞 
+  </a>
+</p>
+
+  </div>
+</body>
+</html>
