@@ -4,226 +4,441 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فروعنا - قيادة لتأجير السيارات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
+    :root {
+      --primary-color: #212F58;
+      --secondary-color: #FFD700;
+      --accent-color: #3a86ff;
+      --text-color: #2d3748;
+      --light-bg: #f8fafc;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #00c4de, #fff);
-      color: #333;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    .branches-header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1a2440 100%);
+      color: var(--white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 60px;
+      border-radius: 0 0 30px 30px;
+      box-shadow: var(--shadow);
       text-align: center;
     }
-    .bg-overlay {
-      position: fixed;
+    
+    .branches-header:before {
+      content: '';
+      position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url('../background.jpg');
-      background-size: cover;
-      opacity: 0.08;
-      z-index: 0;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkgc2NhbGUoMSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+      opacity: 0.3;
     }
-    .content {
+    
+    .branches-header .container {
       position: relative;
       z-index: 1;
-      max-width: 1200px;
+    }
+    
+    .branches-header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: var(--white);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .branches-header p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 20px;
+      line-height: 1.8;
     }
-    .logo {
-      width: 200px;
-      margin: 20px 0;
+    
+    /* City Divider */
+    .city-divider {
+      text-align: right;
+      margin: 80px 0 40px;
+      position: relative;
     }
+    
+    .city-divider h2 {
+      display: inline-block;
+      margin: 0;
+      padding: 0 25px;
+      background: var(--light-bg);
+      color: var(--primary-color);
+      position: relative;
+      z-index: 1;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+    
+    .city-divider:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      z-index: 0;
+      border-radius: 3px;
+    }
+    
+    /* Branches Grid */
     .branches-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 30px;
-      margin: 40px 0;
+      margin: 50px 0;
     }
+    
     .branch-card {
-      background: white;
+      background: var(--white);
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid rgba(0,0,0,0.05);
-      position: relative;
-      overflow: hidden;
-    }
-    .branch-card:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #00c4de, #212F58);
-    }
-    .branch-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-    }
-    .branch-image {
-      height: 200px;
-      background-color: #f5f5f5;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 1.2rem;
-    }
-    .branch-info {
-      padding: 30px 25px;
-      text-align: right;
+      flex-direction: column;
+      height: 100%;
       position: relative;
-    }
-    .branch-info h2 {
-      margin: 0 0 12px 0;
-      color: #212F58;
-      font-size: 1.8rem;
-      position: relative;
-      display: inline-block;
-    }
-    .branch-info h2:after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      right: 0;
-      width: 50px;
-      height: 3px;
-      background: #00c4de;
-      transition: width 0.3s ease;
-    }
-    .branch-card:hover .branch-info h2:after {
-      width: 100%;
-    }
-    .branch-address, .branch-hours {
-      color: #666;
-      margin: 15px 0;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .branch-link {
-      display: inline-flex;
-      align-items: center;
-      margin-top: 20px;
-      padding: 12px 30px;
-      background: linear-gradient(45deg, #00c4de, #0099b8);
-      color: white;
       text-decoration: none;
-      border-radius: 30px;
-      transition: all 0.3s ease;
-      font-weight: bold;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 15px rgba(0, 196, 222, 0.3);
-      position: relative;
-      overflow: hidden;
+      color: inherit;
     }
-    .branch-link:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
+    
+    .branch-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    
+    .branch-image {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .branch-image img {
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
+      object-fit: cover;
+      transition: var(--transition);
     }
-    .branch-link:hover:before {
-      left: 100%;
+    
+    .branch-card:hover .branch-image img {
+      transform: scale(1.05);
     }
-    .branch-link:hover {
-      background: linear-gradient(45deg, #0099b8, #00c4de);
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 196, 222, 0.4);
+    
+    .branch-info {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
-    .back-home {
-      display: inline-block;
-      margin: 20px 0;
-      color: #212F58;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
+    
+    .branch-info h2 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
     }
-    .back-home:hover {
-      color: #00c4de;
+    
+    .branch-address, .branch-hours {
+      color: #555;
+      margin: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      line-height: 1.6;
     }
-    .page-title {
-      color: #212F58;
-      font-size: 2.8rem;
-      margin: 60px 0 40px;
-      position: relative;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .page-title span {
-      position: relative;
-      z-index: 1;
-      background: linear-gradient(45deg, #212F58, #00c4de);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-    }
-    .title-underline {
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #00c4de, #212F58);
-      margin: 15px auto 0;
-      border-radius: 2px;
-    }
-    .page-subtitle {
-      color: #666;
+    
+    .branch-address:before, .branch-hours:before {
+      margin-left: 10px;
       font-size: 1.2rem;
-      margin-bottom: 40px;
-      text-align: center;
+    }
+    
+    .branch-address:before {
+      content: '📍';
+    }
+    
+    .branch-hours:before {
+      content: '🕒';
+    }
+    
+    .branch-details-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: var(--primary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: 2px solid var(--primary-color);
+    }
+    
+    .branch-details-link:hover {
+      background: transparent;
+      color: var(--primary-color);
+    }
+    
+    .branch-details-link i {
+      margin-right: 8px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .branches-header h1 {
+        font-size: 3rem;
+      }
+      
+      .branches-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .branches-header {
+        padding: 80px 0 60px;
+      }
+      
+      .branches-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .branches-header p {
+        font-size: 1.1rem;
+      }
+      
+      .city-divider h2 {
+        font-size: 1.8rem;
+      }
+      
+      .branches-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .branches-header h1 {
+        font-size: 2rem;
+      }
+      
+      .branches-header p {
+        font-size: 1rem;
+      }
+      
+      .city-divider h2 {
+        font-size: 1.5rem;
+        padding: 0 15px;
+      }
+      
+      .branch-info {
+        padding: 20px;
+      }
+      
+      .branch-info h2 {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="bg-overlay"></div>
+  <!-- Header Section -->
+  <header class="branches-header">
+    <div class="container">
+      <h1>فروعنا</h1>
+      <p>اكتشف فروعنا المنتشرة في مختلف أنحاء المملكة العربية السعودية، حيث نقدم لكم أفضل خدمات تأجير السيارات بأسعار تنافسية وجودة عالية</p>
+    </div>
+  </header>
   
-  <div class="content">
-    <h1 class="page-title">
-      <span>فروعنا</span>
-      <div class="title-underline"></div>
-    </h1>
-    <p class="page-subtitle">اكتشف أقرب فرع اليك واستمتع بخدماتنا المتميزة</p>
+  <div class="container">
+    <!-- Riyadh Branches -->
+    <div class="city-divider">
+      <h2><i class="fas fa-city"></i> فروع الرياض</h2>
+    </div>
     
     <div class="branches-grid">
-      <!-- فرع الرياض -->
-      <div class="branch-card">
+      <!-- فرع غرناطة -->
+      <a href="Riyadh-GhornataBranch/index.html" class="branch-card">
         <div class="branch-image">
-          <span>صورة فرع الرياض</span>
+          <img src="../images/G.jpeg" alt="الرياض - فرع غرناطة" loading="lazy">
         </div>
         <div class="branch-info">
-          <h2>الرياض</h2>
-          <p class="branch-address">📍 حي الصحافة، شارع العليا العام</p>
-          <p class="branch-hours">🕒 24 ساعة</p>
-          <a href="riyadh.html" class="branch-link">عرض التفاصيل</a>
+          <h2>فرع غرناطة</h2>
+          <p class="branch-address">حي غرناطة طريق الدمام</p>
+          <p class="branch-hours">مفتوح اليوم 24 ساعة</p>
+          <span class="branch-details-link">
+            <i class="fas fa-arrow-left"></i> عرض التفاصيل
+          </span>
         </div>
-      </div>
+      </a>
       
-      <!-- فرع جدة -->
-      <div class="branch-card">
+      <!-- فرع حي الصحافة -->
+      <a href="Riyadh-Al-SahafahBranch/index.html" class="branch-card">
         <div class="branch-image">
-          <span>صورة فرع جدة</span>
+          <img src="../images/anas.jpeg" alt="الرياض - فرع حي الصحافة" loading="lazy">
         </div>
         <div class="branch-info">
-          <h2>جدة</h2>
-          <p class="branch-address">📍 حي السلامة، شارع الأمير سلطان</p>
-          <p class="branch-hours">🕒 24 ساعة</p>
-          <a href="jeddah.html" class="branch-link">عرض التفاصيل</a>
+          <h2>فرع حي الصحافة</h2>
+          <p class="branch-address">حي الصحافة، شارع انس بن مالك</p>
+          <p class="branch-hours">مفتوح اليوم 8:30 ص - 12:00 ص</p>
+          <span class="branch-details-link">
+            <i class="fas fa-arrow-left"></i> عرض التفاصيل
+          </span>
         </div>
-      </div>
+      </a>
       
+      <!-- فرع حي الضباط -->
+      <a href="Riyadh-Al-DhobatBranch/index.html" class="branch-card">
+        <div class="branch-image">
+          <img src="../images/k.jpeg" alt="الرياض - فرع حي الضباط" loading="lazy">
+        </div>
+        <div class="branch-info">
+          <h2>فرع حي الضباط</h2>
+          <p class="branch-address">حي الضباط، دوار الكويت</p>
+          <p class="branch-hours">مفتوح اليوم 8:30 ص - 12:00 ص</p>
+          <span class="branch-details-link">
+            <i class="fas fa-arrow-left"></i> عرض التفاصيل
+          </span>
+        </div>
+      </a>
+      
+      <!-- فرع حي الربوة 1 -->
+      <a href="Riyadh-Al-RabwaBranch/index.html" class="branch-card">
+        <div class="branch-image">
+          <img src="../images/rabwa.jpeg" alt="الرياض - فرع حي الربوة" loading="lazy">
+        </div>
+        <div class="branch-info">
+          <h2>فرع حي الربوة 1</h2>
+          <p class="branch-address">حي الربوة، طريق خريص</p>
+          <p class="branch-hours">مفتوح اليوم 8:30 ص - 12:00 ص</p>
+          <span class="branch-details-link">
+            <i class="fas fa-arrow-left"></i> عرض التفاصيل
+          </span>
+        </div>
+      </a>
+      
+      <!-- فرع حي الربوة 2 -->
+      <a href="Riyadh-Al-RabwaBranch2/index.html" class="branch-card">
+        <div class="branch-image">
+          <img src="../images/ahsa.jpeg" alt="الرياض - فرع حي الربوة 2" loading="lazy">
+        </div>
+        <div class="branch-info">
+          <h2>فرع حي الربوة 2</h2>
+          <p class="branch-address">حي الربوة، شارع الاحساء</p>
+          <p class="branch-hours">مفتوح اليوم 8:30 ص - 12:00 ص</p>
+          <span class="branch-details-link">
+            <i class="fas fa-arrow-left"></i> عرض التفاصيل
+          </span>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Jeddah Branches -->
+    <div class="city-divider">
+      <h2><i class="fas fa-umbrella-beach"></i> فروع جدة</h2>
+    </div>
+    
+    <div class="branches-grid">
+      <!-- فرع حي الفضيلة -->
+      <a href="Jeddah-Al-FadilahBranch/index.html" class="branch-card">
+        <div class="branch-image">
+          <img src="../images/j-f.jpeg" alt="جدة - فرع حي الفضيلة" loading="lazy">
+        </div>
+        <div class="branch-info">
+          <h2>فرع حي الفضيلة</h2>
+          <p class="branch-address">حي الفضيلة، طريق الخمرة</p>
+          <p class="branch-hours">مفتوح اليوم 8:30 ص - 12:00 ص</p>
+          <span class="branch-details-link">
+            <i class="fas fa-arrow-left"></i> عرض التفاصيل
+          </span>
+        </div>
+      </a>
 
-    <div>
-      <a href="../index.html" class="back-home">← العودة للصفحة الرئيسية</a>
+      <!-- فرع حي الروضة -->
+      <a href="Jeddah-Al-RawdaBranch/index.html" class="branch-card">
+        <div class="branch-image">
+          <img src="../images/j-r.jpeg" alt="جدة - فرع الروضة" loading="lazy">
+        </div>
+        <div class="branch-info">
+          <h2>فرع الروضة</h2>
+          <p class="branch-address">حي الروضة، طريق المدينة المنورة</p>
+          <p class="branch-hours">مفتوح اليوم 8:30 ص - 12:00 ص</p>
+          <span class="branch-details-link">
+            <i class="fas fa-arrow-left"></i> عرض التفاصيل
+          </span>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Back to Home -->
+    <div style="text-align: center; margin: 60px 0 40px;">
+      <a href="../index.html" class="back-link">
+        <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+      </a>
     </div>
   </div>
+  
+  <script>
+    // Add animation to branch cards on scroll
+    const animateOnScroll = () => {
+      const cards = document.querySelectorAll('.branch-card');
+      cards.forEach(card => {
+        const cardPosition = card.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (cardPosition < screenPosition) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Set initial styles for animation
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.branch-card').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.5s ${index * 0.1}s ease-out, transform 0.5s ${index * 0.1}s ease-out`;
+      });
+      
+      // Trigger initial animation
+      setTimeout(animateOnScroll, 300);
+    });
+    
+    // Animate on scroll
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
 </body>
 </html>
